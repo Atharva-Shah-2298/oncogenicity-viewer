@@ -1,0 +1,12 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+.venv/
+data/
+extraction.db
+*.db-journal
+gene_variant_dict.json
+!webapp/data/
+!webapp/data/gene_variant_dict.json.gz

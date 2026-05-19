@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gene variant oncogenicity — PubMed evidence</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Gene variant oncogenicity</h1>
+    <p class="sub">Evidence from PMC full-text literature · validated verbatim quotes</p>
+    <p id="stats" class="stats">Loading…</p>
+  </header>
+
+  <main class="layout">
+    <aside class="panel">
+      <label for="gene-search">Gene</label>
+      <input id="gene-search" type="search" placeholder="e.g. BRAF, TP53" autocomplete="off" />
+      <ul id="gene-list" class="gene-list"></ul>
+
+      <label for="variant-select">Variant</label>
+      <select id="variant-select" disabled>
+        <option value="">Select a gene first</option>
+      </select>
+    </aside>
+
+    <section class="panel detail" id="detail">
+      <p class="placeholder">Search for a gene, then pick a variant to see references and quotes.</p>
+    </section>
+  </main>
+
+  <footer>
+  <p>Data: automated extraction from PubMed/PMC (commercial-use OA). Claims require human review for clinical use.</p>
+  </footer>
+  <script src="/static/app.js"></script>
+</body>
+</html>
