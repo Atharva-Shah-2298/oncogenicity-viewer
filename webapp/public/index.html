@@ -3,28 +3,63 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gene variant oncogenicity — PubMed evidence</title>
+  <title>Oncogenicity Evidence Browser</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>Gene variant oncogenicity</h1>
-    <p class="sub">Evidence from PMC full-text literature · validated verbatim quotes</p>
-    <p id="stats" class="stats">Loading data…</p>
+  <div class="page-bg" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-icon" aria-hidden="true">◈</span>
+        <div>
+          <h1>Oncogenicity Evidence</h1>
+          <p class="sub">ClinGen / CGC / VICC · PMC full-text · validated quotes</p>
+        </div>
+      </div>
+      <div id="stats" class="stats-row">
+        <span class="stat-chip loading">Loading dataset…</span>
+      </div>
+    </div>
   </header>
+
   <main class="layout">
-    <aside class="panel">
-      <label for="gene-search">Gene</label>
-      <input id="gene-search" type="search" placeholder="e.g. BRAF, TP53" autocomplete="off" />
-      <ul id="gene-list" class="gene-list"></ul>
-      <label for="variant-select">Variant</label>
-      <select id="variant-select" disabled><option>Select a gene first</option></select>
+    <aside class="panel sidebar">
+      <div class="panel-head">
+        <h2>Browse</h2>
+        <p>Search genes from the curated variant list</p>
+      </div>
+
+      <label class="field-label" for="gene-search">Gene symbol</label>
+      <div class="search-wrap">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input id="gene-search" type="search" placeholder="BRAF, GNAS, PTEN…" autocomplete="off" />
+      </div>
+      <ul id="gene-list" class="gene-list" role="listbox" aria-label="Genes"></ul>
+
+      <label class="field-label" for="variant-select">Variant</label>
+      <select id="variant-select" disabled aria-label="Variant">
+        <option>Select a gene first</option>
+      </select>
     </aside>
-    <section class="panel detail" id="detail">
-      <p class="placeholder">Loading…</p>
+
+    <section class="panel detail" id="detail" aria-live="polite">
+      <div class="empty-state">
+        <div class="empty-icon">⎔</div>
+        <h3>Select a gene &amp; variant</h3>
+        <p>Evidence cards with PubMed links and verbatim quotes will appear here.</p>
+      </div>
     </section>
   </main>
-  <footer><p>Automated extraction from PubMed/PMC. For research use; not clinical advice.</p></footer>
+
+  <footer class="site-footer">
+    <p>Automated literature extraction from PubMed/PMC · For research use only · Not clinical advice</p>
+  </footer>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
   <script src="app.js"></script>
 </body>

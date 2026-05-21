@@ -8,6 +8,13 @@ let DATA = null;
 let selectedGene = null;
 let debounceTimer = null;
 
+const CONSENSUS_LABEL = {
+  oncogenic: "Oncogenic",
+  not_oncogenic: "Not oncogenic",
+  uncertain: "Uncertain",
+  no_data: "No data",
+};
+
 async function loadData() {
   const r = await fetch("gene_variant_dict.json.gz");
   if (!r.ok) throw new Error("Failed to load gene_variant_dict.json.gz");
@@ -22,7 +29,10 @@ async function loadData() {
       nRef += (v.references || []).length;
     }
   }
-  statsEl.textContent = `${nGenes.toLocaleString()} genes · ${nVar.toLocaleString()} variants · ${nRef.toLocaleString()} references`;
+  statsEl.innerHTML = `
+    <span class="stat-chip genes">${nGenes.toLocaleString()} genes</span>
+    <span class="stat-chip variants">${nVar.toLocaleString()} variants</span>
+    <span class="stat-chip refs">${nRef.toLocaleString()} references</span>`;
 }
 
 function genesMatching(q) {
@@ -44,11 +54,26 @@ function escapeHtml(s) {
   return d.innerHTML;
 }
 
+function parseCriterion(text) {
+  const m = (text || "").match(/^\[(OS2|BS2)\]\s*/);
+  return m ? m[1] : null;
+}
+
+function cleanEvidence(text) {
+  return (text || "").replace(/^\[(OS2|BS2)\]\s*/, "").trim();
+}
+
 function renderGeneList(q = "") {
   geneList.innerHTML = "";
-  genesMatching(q).forEach((g) => {
+  const matches = genesMatching(q);
+  if (!matches.length) {
+    geneList.innerHTML = '<li style="cursor:default;color:var(--text-muted)">No genes match</li>';
+    return;
+  }
+  matches.forEach((g) => {
     const li = document.createElement("li");
     li.textContent = g;
+    li.setAttribute("role", "option");
     li.addEventListener("click", () => selectGene(g, li));
     if (g === selectedGene) li.classList.add("active");
     geneList.appendChild(li);
@@ -67,12 +92,18 @@ function selectGene(gene, liEl) {
     .sort(([a], [b]) => a.localeCompare(b))
     .forEach(([variant, entry]) => {
       const s = entry.summary || {};
+      const c = s.consensus || "no_data";
       const opt = document.createElement("option");
       opt.value = variant;
-      opt.textContent = `${variant} (${s.n_references ?? (entry.references || []).length} refs, ${s.consensus || "no_data"})`;
+      opt.textContent = `${variant} · ${s.n_references ?? (entry.references || []).length} refs · ${CONSENSUS_LABEL[c] || c}`;
       variantSelect.appendChild(opt);
     });
-  detail.innerHTML = `<p class="placeholder">${Object.keys(vars).length} variant(s) for <strong>${gene}</strong>.</p>`;
+  detail.innerHTML = `
+    <div class="empty-state">
+      <div class="empty-icon">◎</div>
+      <h3>${Object.keys(vars).length} variant(s) for ${gene}</h3>
+      <p>Choose a variant from the dropdown to view evidence.</p>
+    </div>`;
 }
 
 function loadVariant(gene, variant) {
@@ -80,26 +111,42 @@ function loadVariant(gene, variant) {
   const s = entry.summary || {};
   const refs = entry.references || [];
   const consensus = s.consensus || "no_data";
+  const label = CONSENSUS_LABEL[consensus] || consensus.replace(/_/g, " ");
+
   let html = `
-    <h2><code>${gene}</code> · <code>${variant}</code>
-      <span class="${badgeClass(consensus)}">${consensus.replace(/_/g, " ")}</span>
-    </h2>
-    <p class="summary-line">
-      ${s.n_references ?? refs.length} references · ${s.n_oncogenic_yes ?? 0} oncogenic · ${s.n_oncogenic_no ?? 0} not oncogenic
-    </p>`;
+    <div class="variant-header">
+      <div class="variant-title">
+        <span class="gene">${escapeHtml(gene)}</span>
+        <span class="sep">·</span>
+        <code class="variant">${escapeHtml(variant)}</code>
+        <span class="${badgeClass(consensus)}">${escapeHtml(label)}</span>
+      </div>
+      <div class="summary-grid">
+        <span class="summary-pill"><strong>${s.n_references ?? refs.length}</strong> references</span>
+        <span class="summary-pill"><strong>${s.n_oncogenic_yes ?? 0}</strong> oncogenic</span>
+        <span class="summary-pill"><strong>${s.n_oncogenic_no ?? 0}</strong> not oncogenic</span>
+      </div>
+    </div>
+    <p class="refs-heading">${refs.length} literature reference${refs.length === 1 ? "" : "s"}</p>`;
+
   refs.forEach((r) => {
-    const types = Array.isArray(r.evidence_type) ? r.evidence_type.join(", ") : r.evidence_type;
+    const types = Array.isArray(r.evidence_type) ? r.evidence_type : [];
     const url = `https://pubmed.ncbi.nlm.nih.gov/${r.pmid}/`;
+    const crit = parseCriterion(r.functional_evidence);
+    const evidence = cleanEvidence(r.functional_evidence);
     html += `
       <article class="ref-card">
         <div class="ref-head">
-          <a href="${url}" target="_blank" rel="noopener">PMID ${r.pmid}</a>
-          <span class="${claimClass(r.oncogenic_claim)}">${r.oncogenic_claim}</span>
-          ${r.quote_validated ? '<span class="tags">✓ quote validated</span>' : '<span class="tags">quote not validated</span>'}
+          <a class="pmid-link" href="${url}" target="_blank" rel="noopener">↗ PMID ${escapeHtml(r.pmid)}</a>
+          <span class="${claimClass(r.oncogenic_claim)}">${escapeHtml(r.oncogenic_claim || "uncertain")}</span>
+          ${crit ? `<span class="criterion-tag">${crit}</span>` : ""}
+          ${r.quote_validated
+            ? '<span class="validated">✓ validated quote</span>'
+            : '<span class="not-validated">unvalidated quote</span>'}
         </div>
-        <p class="evidence">${escapeHtml(r.functional_evidence)}</p>
+        <p class="evidence">${escapeHtml(evidence)}</p>
         <blockquote class="quote">${escapeHtml(r.verbatim_quote)}</blockquote>
-        ${types ? `<p class="tags">Evidence: ${escapeHtml(types)}</p>` : ""}
+        ${types.length ? `<div class="tags">${types.map((t) => `<span class="tag">${escapeHtml(t)}</span>`).join("")}</div>` : ""}
       </article>`;
   });
   detail.innerHTML = html;
@@ -115,11 +162,8 @@ variantSelect.addEventListener("change", () => {
 });
 
 loadData()
-  .then(() => {
-    renderGeneList();
-    detail.innerHTML = '<p class="placeholder">Search for a gene, then pick a variant.</p>';
-  })
+  .then(() => renderGeneList())
   .catch((e) => {
-    statsEl.textContent = "Error: " + e.message;
-    detail.innerHTML = "<p>Could not load data file.</p>";
+    statsEl.innerHTML = `<span class="stat-chip" style="color:var(--no)">Error: ${escapeHtml(e.message)}</span>`;
+    detail.innerHTML = `<div class="empty-state"><h3>Could not load data</h3><p>${escapeHtml(e.message)}</p></div>`;
   });
