@@ -10,12 +10,45 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="page-bg" aria-hidden="true"></div>
+  <div class="page-bg" aria-hidden="true">
+    <div class="bg-mesh"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+    <div class="bg-noise"></div>
+  </div>
 
   <header class="site-header">
     <div class="header-inner">
       <div class="brand">
-        <span class="brand-icon" aria-hidden="true">◈</span>
+        <div class="brand-logo" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logoGrad" x1="8" y1="4" x2="40" y2="44" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#5eead4"/>
+                <stop offset="0.5" stop-color="#818cf8"/>
+                <stop offset="1" stop-color="#c084fc"/>
+              </linearGradient>
+              <filter id="logoGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="2" result="blur"/>
+                <feMerge>
+                  <feMergeNode in="blur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+            <circle cx="24" cy="24" r="21" stroke="url(#logoGrad)" stroke-width="1.5" opacity="0.35"/>
+            <path d="M14 12c4 8 4 16 0 24M34 12c-4 8-4 16 0 24" stroke="url(#logoGrad)" stroke-width="2.2" stroke-linecap="round" filter="url(#logoGlow)"/>
+            <circle cx="14" cy="12" r="3" fill="#5eead4"/>
+            <circle cx="14" cy="24" r="3" fill="#818cf8"/>
+            <circle cx="14" cy="36" r="3" fill="#c084fc"/>
+            <circle cx="34" cy="12" r="3" fill="#c084fc"/>
+            <circle cx="34" cy="24" r="3" fill="#818cf8"/>
+            <circle cx="34" cy="36" r="3" fill="#5eead4"/>
+            <path d="M14 24h20" stroke="url(#logoGrad)" stroke-width="1.2" stroke-dasharray="3 4" opacity="0.6"/>
+          </svg>
+        </div>
         <div>
           <h1>Oncogenicity Evidence</h1>
           <p class="sub">ClinGen / CGC / VICC · PMC full-text · validated quotes</p>
