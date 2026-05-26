@@ -79,6 +79,9 @@
         <span class="search-icon" aria-hidden="true">⌕</span>
         <input id="variant-search" type="search" placeholder="p.Val600Glu, V600E, c.1799…" autocomplete="off" />
       </div>
+      <select id="variant-select" aria-label="Variant dropdown">
+        <option value="">All variants — search or pick below</option>
+      </select>
       <ul id="variant-list" class="gene-list scroll-list variant-list" role="listbox" aria-label="Variants"></ul>
     </aside>
 
@@ -95,7 +98,7 @@
     <p>Automated literature extraction from PubMed/PMC · For research use only · Not clinical advice</p>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
-  <script src="app.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="app.js?v=2"></script>
 </body>
 </html>

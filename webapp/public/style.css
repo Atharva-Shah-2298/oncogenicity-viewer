@@ -318,7 +318,7 @@ input[type="search"]:focus, select:focus {
   box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
-select { cursor: pointer; }
+select { cursor: pointer; margin-bottom: 0.65rem; }
 select:disabled { opacity: 0.55; cursor: not-allowed; }
 
 .gene-list {

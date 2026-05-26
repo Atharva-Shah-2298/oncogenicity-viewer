@@ -1,6 +1,7 @@
 const geneSearch = document.getElementById("gene-search");
 const geneList = document.getElementById("gene-list");
 const variantSearch = document.getElementById("variant-search");
+const variantSelect = document.getElementById("variant-select");
 const variantList = document.getElementById("variant-list");
 const detail = document.getElementById("detail");
 const statsEl = document.getElementById("stats");
@@ -19,12 +20,38 @@ const CONSENSUS_LABEL = {
   no_data: "No data",
 };
 
+async function loadGzOrJson() {
+  const gzRes = await fetch("gene_variant_dict.json.gz");
+  if (gzRes.ok) {
+    try {
+      return await parseGzipResponse(gzRes);
+    } catch (e) {
+      console.warn("gzip decode failed, trying plain JSON", e);
+    }
+  }
+  const jsonRes = await fetch("gene_variant_dict.json");
+  if (!jsonRes.ok) {
+    throw new Error("Could not load gene_variant_dict.json.gz or .json");
+  }
+  return JSON.parse(await jsonRes.text());
+}
+
+async function parseGzipResponse(response) {
+  if (typeof DecompressionStream !== "undefined") {
+    const stream = response.body.pipeThrough(new DecompressionStream("gzip"));
+    const text = await new Response(stream).text();
+    return JSON.parse(text);
+  }
+  if (typeof pako !== "undefined") {
+    const buf = await response.arrayBuffer();
+    const text = pako.ungzip(new Uint8Array(buf), { to: "string" });
+    return JSON.parse(text);
+  }
+  throw new Error("No gzip decoder (need modern browser or pako CDN)");
+}
+
 async function loadData() {
-  const r = await fetch("gene_variant_dict.json.gz");
-  if (!r.ok) throw new Error("Failed to load gene_variant_dict.json.gz");
-  const buf = await r.arrayBuffer();
-  const json = pako.ungzip(new Uint8Array(buf), { to: "string" });
-  DATA = JSON.parse(json);
+  DATA = await loadGzOrJson();
   buildVariantIndex();
   const nGenes = Object.keys(DATA).length;
   let nVar = 0, nRef = 0;
@@ -74,8 +101,7 @@ function variantsMatching(q) {
     .filter(
       (item) =>
         item.variant.toUpperCase().includes(u) ||
-        item.gene.toUpperCase().includes(u) ||
-        `${item.gene} ${item.variant}`.toUpperCase().includes(u)
+        item.gene.toUpperCase().includes(u)
     )
     .slice(0, 500);
 }
@@ -118,9 +144,34 @@ function renderGeneList(q = "") {
   });
 }
 
+function fillVariantSelect(items) {
+  variantSelect.innerHTML = "";
+  const placeholder = document.createElement("option");
+  placeholder.value = "";
+  placeholder.textContent = items.length
+    ? `Choose variant (${items.length})…`
+    : "No variants match";
+  variantSelect.appendChild(placeholder);
+  items.forEach((item) => {
+    const label = CONSENSUS_LABEL[item.consensus] || item.consensus;
+    const opt = document.createElement("option");
+    opt.value = `${item.gene}|${item.variant}`;
+    opt.textContent = selectedGene
+      ? `${item.variant} · ${item.nRefs} refs · ${label}`
+      : `${item.gene} · ${item.variant} · ${item.nRefs} refs · ${label}`;
+    if (item.gene === selectedGene && item.variant === selectedVariant) {
+      opt.selected = true;
+    }
+    variantSelect.appendChild(opt);
+  });
+  variantSelect.disabled = items.length === 0;
+}
+
 function renderVariantList(q = "") {
-  variantList.innerHTML = "";
   const matches = variantsMatching(q);
+  fillVariantSelect(matches);
+
+  variantList.innerHTML = "";
   if (!matches.length) {
     variantList.innerHTML = '<li class="empty-hint">No variants match</li>';
     return;
@@ -150,12 +201,13 @@ function selectGene(gene, liEl) {
   if (liEl) liEl.classList.add("active");
   variantSearch.disabled = false;
   variantSearch.placeholder = `Search variants in ${gene}…`;
-  renderVariantList(variantSearch.value.trim());
+  variantSearch.value = "";
+  renderVariantList("");
   detail.innerHTML = `
     <div class="empty-state">
       <div class="empty-icon">◎</div>
       <h3>${Object.keys(DATA[gene]).length} variant(s) for ${gene}</h3>
-      <p>Search or pick a variant to view evidence.</p>
+      <p>Search, pick from the list, or use the dropdown.</p>
     </div>`;
 }
 
@@ -235,12 +287,20 @@ variantSearch.addEventListener("input", () => {
   variantDebounce = setTimeout(() => renderVariantList(variantSearch.value.trim()), 150);
 });
 
+variantSelect.addEventListener("change", () => {
+  const val = variantSelect.value;
+  if (!val) return;
+  const [gene, variant] = val.split("|");
+  selectVariant(gene, variant, null);
+});
+
 loadData()
   .then(() => {
     renderGeneList();
     renderVariantList();
   })
   .catch((e) => {
-    statsEl.innerHTML = `<span class="stat-chip" style="color:var(--no)">Error: ${escapeHtml(e.message)}</span>`;
-    detail.innerHTML = `<div class="empty-state"><h3>Could not load data</h3><p>${escapeHtml(e.message)}</p></div>`;
+    console.error(e);
+    statsEl.innerHTML = `<span class="stat-chip" style="color:var(--no)">Load error</span>`;
+    detail.innerHTML = `<div class="empty-state"><h3>Could not load data</h3><p>${escapeHtml(e.message)}</p><p>Try a hard refresh (Ctrl+Shift+R).</p></div>`;
   });
