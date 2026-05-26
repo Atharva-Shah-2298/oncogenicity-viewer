@@ -1,12 +1,16 @@
 const geneSearch = document.getElementById("gene-search");
 const geneList = document.getElementById("gene-list");
-const variantSelect = document.getElementById("variant-select");
+const variantSearch = document.getElementById("variant-search");
+const variantList = document.getElementById("variant-list");
 const detail = document.getElementById("detail");
 const statsEl = document.getElementById("stats");
 
 let DATA = null;
+let VARIANT_INDEX = [];
 let selectedGene = null;
-let debounceTimer = null;
+let selectedVariant = null;
+let geneDebounce = null;
+let variantDebounce = null;
 
 const CONSENSUS_LABEL = {
   oncogenic: "Oncogenic",
@@ -21,6 +25,7 @@ async function loadData() {
   const buf = await r.arrayBuffer();
   const json = pako.ungzip(new Uint8Array(buf), { to: "string" });
   DATA = JSON.parse(json);
+  buildVariantIndex();
   const nGenes = Object.keys(DATA).length;
   let nVar = 0, nRef = 0;
   for (const g of Object.values(DATA)) {
@@ -35,11 +40,44 @@ async function loadData() {
     <span class="stat-chip refs">${nRef.toLocaleString()} references</span>`;
 }
 
+function buildVariantIndex() {
+  VARIANT_INDEX = [];
+  for (const [gene, variants] of Object.entries(DATA)) {
+    for (const [variant, entry] of Object.entries(variants)) {
+      const s = entry.summary || {};
+      VARIANT_INDEX.push({
+        gene,
+        variant,
+        consensus: s.consensus || "no_data",
+        nRefs: s.n_references ?? (entry.references || []).length,
+      });
+    }
+  }
+  VARIANT_INDEX.sort((a, b) => a.variant.localeCompare(b.variant));
+}
+
 function genesMatching(q) {
   const names = Object.keys(DATA).sort();
   if (!q) return names.slice(0, 500);
   const u = q.toUpperCase();
   return names.filter((g) => g.toUpperCase().includes(u)).slice(0, 500);
+}
+
+function variantsMatching(q) {
+  let pool = VARIANT_INDEX;
+  if (selectedGene) {
+    pool = pool.filter((item) => item.gene === selectedGene);
+  }
+  if (!q) return pool.slice(0, 500);
+  const u = q.toUpperCase();
+  return pool
+    .filter(
+      (item) =>
+        item.variant.toUpperCase().includes(u) ||
+        item.gene.toUpperCase().includes(u) ||
+        `${item.gene} ${item.variant}`.toUpperCase().includes(u)
+    )
+    .slice(0, 500);
 }
 
 function badgeClass(consensus) {
@@ -67,7 +105,7 @@ function renderGeneList(q = "") {
   geneList.innerHTML = "";
   const matches = genesMatching(q);
   if (!matches.length) {
-    geneList.innerHTML = '<li style="cursor:default;color:var(--text-muted)">No genes match</li>';
+    geneList.innerHTML = '<li class="empty-hint">No genes match</li>';
     return;
   }
   matches.forEach((g) => {
@@ -80,30 +118,65 @@ function renderGeneList(q = "") {
   });
 }
 
+function renderVariantList(q = "") {
+  variantList.innerHTML = "";
+  const matches = variantsMatching(q);
+  if (!matches.length) {
+    variantList.innerHTML = '<li class="empty-hint">No variants match</li>';
+    return;
+  }
+  matches.forEach((item) => {
+    const li = document.createElement("li");
+    const label = CONSENSUS_LABEL[item.consensus] || item.consensus;
+    li.innerHTML = selectedGene
+      ? `<span class="variant-name">${escapeHtml(item.variant)}</span>
+         <span class="variant-meta">${item.nRefs} refs · ${escapeHtml(label)}</span>`
+      : `<span class="variant-name">${escapeHtml(item.gene)} · ${escapeHtml(item.variant)}</span>
+         <span class="variant-meta">${item.nRefs} refs · ${escapeHtml(label)}</span>`;
+    li.setAttribute("role", "option");
+    li.addEventListener("click", () => selectVariant(item.gene, item.variant, li));
+    if (item.gene === selectedGene && item.variant === selectedVariant) {
+      li.classList.add("active");
+    }
+    variantList.appendChild(li);
+  });
+}
+
 function selectGene(gene, liEl) {
   selectedGene = gene;
+  selectedVariant = null;
   geneSearch.value = gene;
   geneList.querySelectorAll("li").forEach((el) => el.classList.remove("active"));
   if (liEl) liEl.classList.add("active");
-  const vars = DATA[gene];
-  variantSelect.disabled = false;
-  variantSelect.innerHTML = '<option value="">Choose variant…</option>';
-  Object.entries(vars)
-    .sort(([a], [b]) => a.localeCompare(b))
-    .forEach(([variant, entry]) => {
-      const s = entry.summary || {};
-      const c = s.consensus || "no_data";
-      const opt = document.createElement("option");
-      opt.value = variant;
-      opt.textContent = `${variant} · ${s.n_references ?? (entry.references || []).length} refs · ${CONSENSUS_LABEL[c] || c}`;
-      variantSelect.appendChild(opt);
-    });
+  variantSearch.disabled = false;
+  variantSearch.placeholder = `Search variants in ${gene}…`;
+  renderVariantList(variantSearch.value.trim());
   detail.innerHTML = `
     <div class="empty-state">
       <div class="empty-icon">◎</div>
-      <h3>${Object.keys(vars).length} variant(s) for ${gene}</h3>
-      <p>Choose a variant from the dropdown to view evidence.</p>
+      <h3>${Object.keys(DATA[gene]).length} variant(s) for ${gene}</h3>
+      <p>Search or pick a variant to view evidence.</p>
     </div>`;
+}
+
+function selectVariant(gene, variant, liEl) {
+  if (gene !== selectedGene) {
+    selectedGene = gene;
+    geneSearch.value = gene;
+    renderGeneList(geneSearch.value.trim());
+    geneList.querySelectorAll("li").forEach((el) => {
+      el.classList.toggle("active", el.textContent === gene);
+    });
+    variantSearch.placeholder = `Search variants in ${gene}…`;
+  }
+  selectedVariant = variant;
+  variantSearch.value = variant;
+  renderVariantList(variantSearch.value.trim());
+  if (liEl) {
+    variantList.querySelectorAll("li").forEach((el) => el.classList.remove("active"));
+    liEl.classList.add("active");
+  }
+  loadVariant(gene, variant);
 }
 
 function loadVariant(gene, variant) {
@@ -153,16 +226,20 @@ function loadVariant(gene, variant) {
 }
 
 geneSearch.addEventListener("input", () => {
-  clearTimeout(debounceTimer);
-  debounceTimer = setTimeout(() => renderGeneList(geneSearch.value.trim()), 150);
+  clearTimeout(geneDebounce);
+  geneDebounce = setTimeout(() => renderGeneList(geneSearch.value.trim()), 150);
 });
-variantSelect.addEventListener("change", () => {
-  const v = variantSelect.value;
-  if (selectedGene && v) loadVariant(selectedGene, v);
+
+variantSearch.addEventListener("input", () => {
+  clearTimeout(variantDebounce);
+  variantDebounce = setTimeout(() => renderVariantList(variantSearch.value.trim()), 150);
 });
 
 loadData()
-  .then(() => renderGeneList())
+  .then(() => {
+    renderGeneList();
+    renderVariantList();
+  })
   .catch((e) => {
     statsEl.innerHTML = `<span class="stat-chip" style="color:var(--no)">Error: ${escapeHtml(e.message)}</span>`;
     detail.innerHTML = `<div class="empty-state"><h3>Could not load data</h3><p>${escapeHtml(e.message)}</p></div>`;

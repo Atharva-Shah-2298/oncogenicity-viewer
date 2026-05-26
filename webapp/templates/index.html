@@ -51,7 +51,7 @@
         </div>
         <div>
           <h1>Oncogenicity Evidence</h1>
-          <p class="sub">ClinGen / CGC / VICC · PMC full-text · validated quotes</p>
+          <p class="sub">Strict variant-matched · ClinGen / CGC / VICC · validated quotes</p>
         </div>
       </div>
       <div id="stats" class="stats-row">
@@ -64,7 +64,7 @@
     <aside class="panel sidebar">
       <div class="panel-head">
         <h2>Browse</h2>
-        <p>Search genes from the curated variant list</p>
+        <p>Search genes and variants from the curated list</p>
       </div>
 
       <label class="field-label" for="gene-search">Gene symbol</label>
@@ -72,12 +72,14 @@
         <span class="search-icon" aria-hidden="true">⌕</span>
         <input id="gene-search" type="search" placeholder="BRAF, GNAS, PTEN…" autocomplete="off" />
       </div>
-      <ul id="gene-list" class="gene-list" role="listbox" aria-label="Genes"></ul>
+      <ul id="gene-list" class="gene-list scroll-list" role="listbox" aria-label="Genes"></ul>
 
-      <label class="field-label" for="variant-select">Variant</label>
-      <select id="variant-select" disabled aria-label="Variant">
-        <option>Select a gene first</option>
-      </select>
+      <label class="field-label" for="variant-search">Variant</label>
+      <div class="search-wrap">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input id="variant-search" type="search" placeholder="p.Val600Glu, V600E, c.1799…" autocomplete="off" />
+      </div>
+      <ul id="variant-list" class="gene-list scroll-list variant-list" role="listbox" aria-label="Variants"></ul>
     </aside>
 
     <section class="panel detail" id="detail" aria-live="polite">

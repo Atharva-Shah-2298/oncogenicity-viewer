@@ -360,6 +360,42 @@ select:disabled { opacity: 0.55; cursor: not-allowed; }
   box-shadow: 0 4px 16px var(--accent-glow);
 }
 
+.gene-list li.empty-hint {
+  cursor: default;
+  color: var(--text-muted);
+  font-family: var(--font);
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.variant-list li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  font-family: var(--font);
+}
+
+.variant-list li .variant-name {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.variant-list li .variant-meta {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.variant-list li.active .variant-meta {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.scroll-list {
+  max-height: 220px;
+}
+
 /* ── Detail panel ── */
 .detail {
   padding: 1.65rem 1.85rem;
