@@ -8,5 +8,6 @@ data/
 extraction.db
 *.db-journal
 gene_variant_dict.json
+!webapp/public/gene_variant_dict.json
 !webapp/data/
 !webapp/data/gene_variant_dict.json.gz
