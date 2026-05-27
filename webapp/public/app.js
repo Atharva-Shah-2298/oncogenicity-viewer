@@ -24,6 +24,13 @@ const DATASETS = {
     desc: "First 200 variants · strict functional extraction · review coverage",
     isPrototype: true,
   },
+  prototype2000: {
+    label: "Prototype · 2000 variants",
+    gz: null,
+    json: "gene_variant_dict_prototype_2000.json",
+    desc: "First 2000 variants · variant PubMed search · strict functional extraction",
+    isPrototype: true,
+  },
 };
 
 let DATA = null;
@@ -120,6 +127,11 @@ function renderStats() {
   }
 
   statsEl.innerHTML = html;
+
+  if (cfg.isPrototype) {
+    const allBtn = prototypeFilters.querySelector('[data-filter="all"]');
+    if (allBtn) allBtn.textContent = `All ${nVar.toLocaleString()}`;
+  }
 }
 
 function passesPrototypeFilter(item) {
