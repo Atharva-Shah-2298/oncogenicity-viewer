@@ -5,6 +5,26 @@ const variantSelect = document.getElementById("variant-select");
 const variantList = document.getElementById("variant-list");
 const detail = document.getElementById("detail");
 const statsEl = document.getElementById("stats");
+const datasetNav = document.getElementById("dataset-nav");
+const browseDesc = document.getElementById("browse-desc");
+const prototypeFilters = document.getElementById("prototype-filters");
+
+const DATASETS = {
+  full: {
+    label: "Full catalog",
+    gz: "gene_variant_dict.json.gz",
+    json: "gene_variant_dict.json",
+    desc: "Search genes and variants from the curated list",
+    isPrototype: false,
+  },
+  prototype: {
+    label: "Prototype · 200 variants",
+    gz: null,
+    json: "gene_variant_dict_prototype_200.json",
+    desc: "First 200 variants · strict functional extraction · review coverage",
+    isPrototype: true,
+  },
+};
 
 let DATA = null;
 let VARIANT_INDEX = [];
@@ -12,6 +32,8 @@ let selectedGene = null;
 let selectedVariant = null;
 let geneDebounce = null;
 let variantDebounce = null;
+let activeDataset = "full";
+let prototypeFilter = "all";
 
 const CONSENSUS_LABEL = {
   oncogenic: "Oncogenic",
@@ -20,20 +42,10 @@ const CONSENSUS_LABEL = {
   no_data: "No data",
 };
 
-async function loadGzOrJson() {
-  const gzRes = await fetch("gene_variant_dict.json.gz");
-  if (gzRes.ok) {
-    try {
-      return await parseGzipResponse(gzRes);
-    } catch (e) {
-      console.warn("gzip decode failed, trying plain JSON", e);
-    }
-  }
-  const jsonRes = await fetch("gene_variant_dict.json");
-  if (!jsonRes.ok) {
-    throw new Error("Could not load gene_variant_dict.json.gz or .json");
-  }
-  return JSON.parse(await jsonRes.text());
+async function fetchJson(url) {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Could not load ${url}`);
+  return JSON.parse(await res.text());
 }
 
 async function parseGzipResponse(response) {
@@ -50,21 +62,18 @@ async function parseGzipResponse(response) {
   throw new Error("No gzip decoder (need modern browser or pako CDN)");
 }
 
-async function loadData() {
-  DATA = await loadGzOrJson();
-  buildVariantIndex();
-  const nGenes = Object.keys(DATA).length;
-  let nVar = 0, nRef = 0;
-  for (const g of Object.values(DATA)) {
-    nVar += Object.keys(g).length;
-    for (const v of Object.values(g)) {
-      nRef += (v.references || []).length;
+async function loadDatasetConfig(cfg) {
+  if (cfg.gz) {
+    const gzRes = await fetch(cfg.gz);
+    if (gzRes.ok) {
+      try {
+        return await parseGzipResponse(gzRes);
+      } catch (e) {
+        console.warn("gzip decode failed, trying plain JSON", e);
+      }
     }
   }
-  statsEl.innerHTML = `
-    <span class="stat-chip genes">${nGenes.toLocaleString()} genes</span>
-    <span class="stat-chip variants">${nVar.toLocaleString()} variants</span>
-    <span class="stat-chip refs">${nRef.toLocaleString()} references</span>`;
+  return fetchJson(cfg.json);
 }
 
 function buildVariantIndex() {
@@ -72,26 +81,68 @@ function buildVariantIndex() {
   for (const [gene, variants] of Object.entries(DATA)) {
     for (const [variant, entry] of Object.entries(variants)) {
       const s = entry.summary || {};
+      const nRefs = s.n_references ?? (entry.references || []).length;
       VARIANT_INDEX.push({
         gene,
         variant,
-        consensus: s.consensus || "no_data",
-        nRefs: s.n_references ?? (entry.references || []).length,
+        consensus: s.consensus || (nRefs ? "uncertain" : "no_data"),
+        nRefs,
       });
     }
   }
-  VARIANT_INDEX.sort((a, b) => a.variant.localeCompare(b.variant));
+  VARIANT_INDEX.sort((a, b) =>
+    a.gene.localeCompare(b.gene) || a.variant.localeCompare(b.variant)
+  );
+}
+
+function renderStats() {
+  const cfg = DATASETS[activeDataset];
+  const nGenes = Object.keys(DATA).length;
+  let nVar = 0;
+  let nRef = 0;
+  let nWithEvidence = 0;
+  for (const g of Object.values(DATA)) {
+    nVar += Object.keys(g).length;
+    for (const v of Object.values(g)) {
+      const refs = v.references || [];
+      nRef += refs.length;
+      if (refs.length > 0) nWithEvidence += 1;
+    }
+  }
+
+  let html = `
+    <span class="stat-chip genes">${nGenes.toLocaleString()} genes</span>
+    <span class="stat-chip variants">${nVar.toLocaleString()} variants</span>
+    <span class="stat-chip refs">${nRef.toLocaleString()} references</span>`;
+
+  if (cfg.isPrototype) {
+    html += `<span class="stat-chip coverage">${nWithEvidence} / ${nVar} with evidence</span>`;
+  }
+
+  statsEl.innerHTML = html;
+}
+
+function passesPrototypeFilter(item) {
+  if (prototypeFilter === "has_evidence") return item.nRefs > 0;
+  if (prototypeFilter === "no_data") return item.nRefs === 0;
+  return true;
 }
 
 function genesMatching(q) {
-  const names = Object.keys(DATA).sort();
+  let names = Object.keys(DATA).sort();
+  if (activeDataset === "prototype") {
+    const visible = new Set(
+      VARIANT_INDEX.filter(passesPrototypeFilter).map((i) => i.gene)
+    );
+    names = names.filter((g) => visible.has(g));
+  }
   if (!q) return names.slice(0, 500);
   const u = q.toUpperCase();
   return names.filter((g) => g.toUpperCase().includes(u)).slice(0, 500);
 }
 
 function variantsMatching(q) {
-  let pool = VARIANT_INDEX;
+  let pool = VARIANT_INDEX.filter(passesPrototypeFilter);
   if (selectedGene) {
     pool = pool.filter((item) => item.gene === selectedGene);
   }
@@ -185,6 +236,7 @@ function renderVariantList(q = "") {
       : `<span class="variant-name">${escapeHtml(item.gene)} · ${escapeHtml(item.variant)}</span>
          <span class="variant-meta">${item.nRefs} refs · ${escapeHtml(label)}</span>`;
     li.setAttribute("role", "option");
+    if (item.nRefs === 0) li.classList.add("no-data");
     li.addEventListener("click", () => selectVariant(item.gene, item.variant, li));
     if (item.gene === selectedGene && item.variant === selectedVariant) {
       li.classList.add("active");
@@ -235,7 +287,7 @@ function loadVariant(gene, variant) {
   const entry = DATA[gene][variant];
   const s = entry.summary || {};
   const refs = entry.references || [];
-  const consensus = s.consensus || "no_data";
+  const consensus = s.consensus || (refs.length ? "uncertain" : "no_data");
   const label = CONSENSUS_LABEL[consensus] || consensus.replace(/_/g, " ");
 
   let html = `
@@ -251,8 +303,20 @@ function loadVariant(gene, variant) {
         <span class="summary-pill"><strong>${s.n_oncogenic_yes ?? 0}</strong> oncogenic</span>
         <span class="summary-pill"><strong>${s.n_oncogenic_no ?? 0}</strong> not oncogenic</span>
       </div>
-    </div>
-    <p class="refs-heading">${refs.length} literature reference${refs.length === 1 ? "" : "s"}</p>`;
+    </div>`;
+
+  if (!refs.length) {
+    html += `
+      <div class="empty-state inline-empty">
+        <div class="empty-icon">—</div>
+        <h3>No functional evidence found</h3>
+        <p>No passing OS2/BS2 literature references for this variant in the prototype run.</p>
+      </div>`;
+    detail.innerHTML = html;
+    return;
+  }
+
+  html += `<p class="refs-heading">${refs.length} literature reference${refs.length === 1 ? "" : "s"}</p>`;
 
   refs.forEach((r) => {
     const types = Array.isArray(r.evidence_type) ? r.evidence_type : [];
@@ -277,6 +341,53 @@ function loadVariant(gene, variant) {
   detail.innerHTML = html;
 }
 
+async function switchDataset(key) {
+  activeDataset = key;
+  selectedGene = null;
+  selectedVariant = null;
+  prototypeFilter = "all";
+
+  datasetNav.querySelectorAll(".dataset-tab").forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.dataset === key);
+  });
+
+  const cfg = DATASETS[key];
+  browseDesc.textContent = cfg.desc;
+  prototypeFilters.classList.toggle("hidden", !cfg.isPrototype);
+  prototypeFilters.querySelectorAll(".filter-chip").forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.filter === "all");
+  });
+
+  statsEl.innerHTML = '<span class="stat-chip loading">Loading dataset…</span>';
+  detail.innerHTML = `
+    <div class="empty-state">
+      <div class="empty-icon">⎔</div>
+      <h3>Loading ${escapeHtml(cfg.label)}…</h3>
+    </div>`;
+
+  try {
+    DATA = await loadDatasetConfig(cfg);
+    buildVariantIndex();
+    renderStats();
+    geneSearch.value = "";
+    variantSearch.value = "";
+    variantSearch.disabled = false;
+    variantSearch.placeholder = "p.Val600Glu, V600E, c.1799…";
+    renderGeneList();
+    renderVariantList();
+    detail.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">⎔</div>
+        <h3>Select a gene &amp; variant</h3>
+        <p>Evidence cards with PubMed links and verbatim quotes will appear here.</p>
+      </div>`;
+  } catch (e) {
+    console.error(e);
+    statsEl.innerHTML = `<span class="stat-chip" style="color:var(--no)">Load error</span>`;
+    detail.innerHTML = `<div class="empty-state"><h3>Could not load ${escapeHtml(cfg.label)}</h3><p>${escapeHtml(e.message)}</p></div>`;
+  }
+}
+
 geneSearch.addEventListener("input", () => {
   clearTimeout(geneDebounce);
   geneDebounce = setTimeout(() => renderGeneList(geneSearch.value.trim()), 150);
@@ -294,13 +405,30 @@ variantSelect.addEventListener("change", () => {
   selectVariant(gene, variant, null);
 });
 
-loadData()
-  .then(() => {
-    renderGeneList();
-    renderVariantList();
-  })
-  .catch((e) => {
-    console.error(e);
-    statsEl.innerHTML = `<span class="stat-chip" style="color:var(--no)">Load error</span>`;
-    detail.innerHTML = `<div class="empty-state"><h3>Could not load data</h3><p>${escapeHtml(e.message)}</p><p>Try a hard refresh (Ctrl+Shift+R).</p></div>`;
+datasetNav.addEventListener("click", (e) => {
+  const btn = e.target.closest(".dataset-tab");
+  if (!btn || btn.dataset.dataset === activeDataset) return;
+  switchDataset(btn.dataset.dataset);
+});
+
+prototypeFilters.addEventListener("click", (e) => {
+  const btn = e.target.closest(".filter-chip");
+  if (!btn) return;
+  prototypeFilter = btn.dataset.filter;
+  prototypeFilters.querySelectorAll(".filter-chip").forEach((el) => {
+    el.classList.toggle("active", el === btn);
   });
+  selectedVariant = null;
+  renderGeneList(geneSearch.value.trim());
+  renderVariantList(variantSearch.value.trim());
+  if (selectedGene) {
+    detail.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">◎</div>
+        <h3>Filtered variant list updated</h3>
+        <p>Pick a variant to review evidence.</p>
+      </div>`;
+  }
+});
+
+switchDataset("full");

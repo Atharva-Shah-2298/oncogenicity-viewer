@@ -195,6 +195,91 @@ body {
   gap: 0.5rem;
 }
 
+.dataset-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  width: 100%;
+  order: 3;
+}
+
+@media (min-width: 900px) {
+  .dataset-nav {
+    width: auto;
+    order: 0;
+    margin-right: auto;
+  }
+}
+
+.dataset-tab {
+  font-family: var(--font);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(24, 32, 51, 0.65);
+  color: var(--text-soft);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.dataset-tab:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.dataset-tab.active {
+  background: var(--accent-soft);
+  border-color: rgba(165, 180, 252, 0.45);
+  color: var(--accent-bright);
+}
+
+.prototype-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.prototype-filters.hidden { display: none; }
+
+.filter-chip {
+  font-family: var(--font);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.filter-chip.active {
+  background: rgba(94, 234, 212, 0.12);
+  border-color: rgba(94, 234, 212, 0.35);
+  color: var(--teal);
+}
+
+.stat-chip.coverage {
+  background: rgba(94, 234, 212, 0.12);
+  border-color: rgba(94, 234, 212, 0.3);
+  color: var(--teal);
+}
+
+.variant-list li.no-data { opacity: 0.72; }
+
+.variant-list li.no-data .variant-meta { color: var(--text-muted); }
+
+.empty-state.inline-empty {
+  margin-top: 1.5rem;
+  padding: 2rem 1.5rem;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  background: rgba(24, 32, 51, 0.45);
+}
+
 .stat-chip {
   font-size: 0.8125rem;
   font-weight: 600;

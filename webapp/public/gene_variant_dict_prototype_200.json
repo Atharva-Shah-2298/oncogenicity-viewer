@@ -1,0 +1,1908 @@
+{
+  "PTCH1": {
+    "p.Arg135Ter": {
+      "references": [
+        {
+          "pmid": "30610186",
+          "oncogenic_claim": "yes",
+          "evidence_type": [
+            "in_vitro",
+            "cell_line_engineering"
+          ],
+          "functional_evidence": "[OS2] The study established an isogenic PTCH1R135X/+ cellular model using CRISPR/Cas9 to introduce the p.R135X mutation. This mutation resulted in haploinsufficiency of PTCH1, leading to ligand-independent activation of SHH signaling and increased cell proliferation. Treatment with GDC-0449 inhibited this activation and reduced proliferation, indicating the oncogenic potential of the variant. Mechanism: loss-of-function Phenotype: increased proliferation Biochemistry: decreased PTCH1 protein expression and increased GLI1 expression",
+          "verbatim_quote": "Using this in vitro isogenic cellular model, we verified that the PTCH1R135X/+ heterozygous mutation causes ligand-independent activation of SHH signalling due to PTCH1 haploinsufficiency.",
+          "quote_validated": true
+        }
+      ],
+      "summary": {
+        "n_references": 1,
+        "n_oncogenic_yes": 1,
+        "n_oncogenic_no": 0,
+        "consensus": "oncogenic"
+      }
+    },
+    "p.Trp1051Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "FGFR2": {
+    "p.Arg625Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "PTEN": {
+    "p.Glu7Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Tyr16Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Met35Ile": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Glu43Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.165-1G>A": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Ser59Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Tyr65Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Tyr68Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.209+1G>C": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.210-2A>G": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.210-1G>A": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Tyr76Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Tyr88Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln110Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gly127Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Glu157Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.492+1G>A": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln171Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Leu182Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.634+2T>C": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.635-2A>G": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.635-1G>A": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Cys218Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Tyr225Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Ser229Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Arg233Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Tyr240Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Leu247Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.802-2del": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.802-2A>T": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.802-1G>A": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Trp274Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln298Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Glu299Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Arg335Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Tyr336Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.1027-1G>A": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "ATM": {
+    "p.Arg23Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.73-1G>A": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln65Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Ser131Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Arg248Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Arg250Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Trp308Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Trp524Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.1607+1G>T": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Ser646Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Ser706Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Arg805Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.3154-1G>T": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln1116Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Trp1221Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.3994-1G>T": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Leu1347Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Arg1618Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln1636Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.4910-1G>T": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Arg1730Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.5320-2A>C": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Glu1783Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Tyr1844Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Arg1875Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Arg1898Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Glu1979Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.6007-2A>G": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Arg2263Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Arg2598Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "WT1": {
+    "p.Arg458Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "MEN1": {
+    "p.Trp428Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "MRE11": {
+    "p.Leu57Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "NOTCH2": {
+    "p.Arg1838Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "SDHB": {
+    "c.423+1G>C": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Arg90Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "NFE2L2": {
+    "p.Arg34Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "DNMT3A": {
+    "p.Trp795Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.2323-2A>G": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "ALK": {
+    "p.Arg401Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "MSH6": {
+    "p.Trp1047Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "FANCD2": {
+    "p.Arg408Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "CTNNB1": {
+    "p.Arg95Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "BAP1": {
+    "p.Ser460Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln267Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln253Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Tyr223Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Trp196Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.581-2A>G": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Glu125Asp": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Arg60Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Trp52Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "TET2": {
+    "p.Arg1216Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "APC": {
+    "p.Tyr191Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Arg332Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln445Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.1409-1G>A": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Arg564Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Glu574Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Leu592Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Trp685Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Tyr737Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln886Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Ser895Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Tyr951Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Leu954Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Glu1209Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Glu1284Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln1303Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Ser1315Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Glu1374Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln1480Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Arg1920Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "RAD50": {
+    "p.Arg278Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Arg1077Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "NSD1": {
+    "p.Arg1984Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "PIK3R1": {
+    "p.Arg639Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "ARID1B": {
+    "p.Ser1088Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "EZH2": {
+    "p.Tyr641Asn": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "ABL1": {
+    "p.Thr315Ala": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "TSC1": {
+    "c.913+1G>A": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Arg228Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Tyr185Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "NOTCH1": {
+    "p.Arg448Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "FANCG": {
+    "p.Gln218Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "SDHD": {
+    "c.52+1G>T": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Ser32Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Arg38Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "KMT2A": {
+    "p.Arg3283Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "ARID2": {
+    "p.Arg274Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "KMT2D": {
+    "p.Arg5501Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "BRCA2": {
+    "c.793+1G>T": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Ser353Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Ser497Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.7977-1G>C": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Ser2984Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Tyr3006Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "RB1": {
+    "c.1049+1G>T": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "FANCI": {
+    "p.Arg614Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "CDH1": {
+    "p.Trp20Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Glu648Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "NF1": {
+    "p.Arg192Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln209Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln282Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Trp426Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln519Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln535Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Ser575Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Cys622Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.2002-1G>A": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln756Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln803Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln912Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln948Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln616His": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Glu1238Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Tyr80Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Trp1258Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.3974+2T>C": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Arg1362Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Tyr1401Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.4515-2A>G": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Arg1534Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Trp1952Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.5609G>A": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln2239Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln2266Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.6819+1G>A": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln2434Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Arg2496Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "BRCA1": {
+    "p.Ser454Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Ser1298Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Glu421Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Cys61Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "RNF43": {
+    "p.Arg337Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "RAD51C": {
+    "c.905-2_905-1del": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "PPM1D": {
+    "p.Trp427Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln462Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Cys478Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Lys480Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Leu484Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Ser503Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Lys535Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "BRIP1": {
+    "c.1078C>T": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "SOX9": {
+    "p.Arg394Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "TP53": {
+    "c.919+1G>A": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Asp149Tyr": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Cys238Phe": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Glu224Asp": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.586C>T": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Cys124Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "SMAD2": {
+    "p.Arg120Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "SMAD4": {
+    "p.Trp323Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Ser343Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Trp302Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Gln455Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "p.Glu538Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "SMARCA4": {
+    "p.Arg1093Ter": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  },
+  "STK11": {
+    "c.290+1G>T": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    },
+    "c.290+2T>A": {
+      "references": [],
+      "summary": {
+        "n_references": 0,
+        "n_oncogenic_yes": 0,
+        "n_oncogenic_no": 0,
+        "consensus": "no_data"
+      }
+    }
+  }
+}

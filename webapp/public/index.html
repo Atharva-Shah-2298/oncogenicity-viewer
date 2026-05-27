@@ -54,6 +54,10 @@
           <p class="sub">Strict variant-matched · ClinGen / CGC / VICC · validated quotes</p>
         </div>
       </div>
+      <nav class="dataset-nav" id="dataset-nav" aria-label="Dataset">
+        <button type="button" class="dataset-tab active" data-dataset="full">Full catalog</button>
+        <button type="button" class="dataset-tab" data-dataset="prototype">Prototype · 200 variants</button>
+      </nav>
       <div id="stats" class="stats-row">
         <span class="stat-chip loading">Loading dataset…</span>
       </div>
@@ -64,7 +68,13 @@
     <aside class="panel sidebar">
       <div class="panel-head">
         <h2>Browse</h2>
-        <p>Search genes and variants from the curated list</p>
+        <p id="browse-desc">Search genes and variants from the curated list</p>
+      </div>
+
+      <div id="prototype-filters" class="prototype-filters hidden" role="group" aria-label="Prototype filters">
+        <button type="button" class="filter-chip active" data-filter="all">All 200</button>
+        <button type="button" class="filter-chip" data-filter="has_evidence">With evidence</button>
+        <button type="button" class="filter-chip" data-filter="no_data">No data yet</button>
       </div>
 
       <label class="field-label" for="gene-search">Gene symbol</label>
@@ -99,6 +109,6 @@
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="app.js?v=2"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>
