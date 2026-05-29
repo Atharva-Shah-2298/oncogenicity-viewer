@@ -17,18 +17,11 @@ const DATASETS = {
     desc: "Search genes and variants from the curated list",
     isPrototype: false,
   },
-  prototype: {
-    label: "Prototype · 200 variants",
+  top40: {
+    label: "Prototype · Top 40 genes",
     gz: null,
-    json: "gene_variant_dict_prototype_200.json",
-    desc: "First 200 variants · strict functional extraction · review coverage",
-    isPrototype: true,
-  },
-  prototype2000: {
-    label: "Prototype · 2000 variants",
-    gz: null,
-    json: "gene_variant_dict_prototype_2000.json",
-    desc: "First 2000 variants · variant PubMed search · strict functional extraction",
+    json: "gene_variant_dict_prototype_top40.json",
+    desc: "Top 40 genes by variant count · all variants · variant PubMed search · strict functional extraction",
     isPrototype: true,
   },
 };
