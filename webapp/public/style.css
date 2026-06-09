@@ -753,3 +753,91 @@ select:disabled { opacity: 0.55; cursor: not-allowed; }
 @media (prefers-reduced-motion: reduce) {
   .bg-orb, .brand-logo { animation: none; }
 }
+
+/* ---- Gemini analysis view ---- */
+.model-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 3px 10px;
+  border-radius: 999px;
+  color: var(--teal);
+  background: rgba(94, 234, 212, 0.12);
+  border: 1px solid rgba(94, 234, 212, 0.3);
+  white-space: nowrap;
+}
+
+.gemini-analysis.md-body {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 26px;
+  margin-top: 6px;
+  color: var(--text-body);
+  line-height: 1.62;
+  font-size: 0.95rem;
+}
+
+.md-body .md-h {
+  font-family: var(--font);
+  color: var(--text);
+  margin: 1.3em 0 0.5em;
+  line-height: 1.3;
+}
+.md-body .md-h:first-child { margin-top: 0; }
+.md-body h3.md-h { font-size: 1.18rem; }
+.md-body h4.md-h { font-size: 1.05rem; }
+.md-body h5.md-h, .md-body h6.md-h { font-size: 0.96rem; color: var(--text-soft); }
+
+.md-body .md-p { margin: 0.6em 0; }
+.md-body .md-ul { margin: 0.5em 0 0.8em; padding-left: 1.3em; }
+.md-body .md-ul li { margin: 0.3em 0; }
+.md-body strong { color: var(--text); font-weight: 600; }
+.md-body em { color: var(--text-soft); }
+.md-body code {
+  background: rgba(129, 140, 248, 0.14);
+  border-radius: 5px;
+  padding: 1px 6px;
+  font-size: 0.88em;
+}
+.md-body a, .sources-list a {
+  color: var(--accent-bright);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(165, 180, 252, 0.35);
+}
+.md-body a:hover, .sources-list a:hover { color: var(--teal); }
+.md-body a.pmid-inline {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sources-block {
+  margin-top: 18px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+}
+.sources-h {
+  margin: 0 0 10px;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+.sources-list {
+  margin: 0;
+  padding-left: 1.1em;
+  display: grid;
+  gap: 6px;
+  font-size: 0.875rem;
+  word-break: break-word;
+}
+
+.model-disclaimer {
+  margin-top: 16px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.5;
+}
