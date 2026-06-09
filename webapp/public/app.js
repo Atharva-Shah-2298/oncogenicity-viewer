@@ -32,6 +32,14 @@ const DATASETS = {
     isPrototype: true,
     isGemini: true,
   },
+  gemini_flash: {
+    label: "Gemini 3.5 Flash · 100 variants",
+    gz: null,
+    json: "gene_variant_dict_gemini_flash.json",
+    desc: "Gemini 3.5 Flash biocuration with Google Search grounding · faster model, 26/100 succeeded (network issues during run)",
+    isPrototype: true,
+    isGemini: true,
+  },
 };
 
 let DATA = null;
